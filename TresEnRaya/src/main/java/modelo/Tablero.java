@@ -5,13 +5,16 @@
  */
 package modelo;
 
+import javafx.scene.layout.GridPane;
+
 /**
  *
  * @author Usuario
  */
-public class Tablero {
+public class Tablero extends GridPane {
     
-    private Celda celdas[][];
+    private int filas = 3;
+    private int columnas = 3;
     
     
 }
