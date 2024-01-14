@@ -6,14 +6,16 @@
 package modelo;
 
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 
 /**
  *
  * @author Usuario
  */
-public class Celda extends Label  {
+public class Celda extends Pane  {
     private String simbolo;
     private final int fila;
     private final int columna;
@@ -21,7 +23,6 @@ public class Celda extends Label  {
 
     public Celda(int fila, int columna, Celda[][] celdas) {
         this.simbolo = "vacio";
-        this.setText("vacio");
         this.fila = fila;
         this.columna = columna;
         this.celdas = celdas;
