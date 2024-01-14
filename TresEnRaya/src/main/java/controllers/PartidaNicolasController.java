@@ -4,7 +4,11 @@
  */
 package controllers;
 
+
+import com.mycompany.tresenraya.Jugador;
 import java.net.URL;
+import java.util.Comparator;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,13 +16,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import modelo.Celda;
+import modelo.Tablero;
 
 /**
  * FXML Controller class
  *
  * @author nicolassierra
  */
-public class PartidaNicolasController implements Initializable {
+public class PartidaNicolasController implements Initializable{
 
     @FXML
     private Label turnoLabel;
@@ -52,13 +58,15 @@ public class PartidaNicolasController implements Initializable {
     private Button pistaButton;
     @FXML
     private Button reiniciarButton;
+    
+    private Tablero tablero;
+    
+    Comparator cmpString; //Comparador de Strings, falta definir aun
 
-    /**
-     * Initializes the controller class.
-     */
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+//        jugar();
     }    
 
     @FXML
@@ -69,4 +77,5 @@ public class PartidaNicolasController implements Initializable {
     private void reiniciarJuego(MouseEvent event) {
     }
     
+        
 }
