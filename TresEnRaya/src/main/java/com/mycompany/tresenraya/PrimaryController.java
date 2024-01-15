@@ -35,7 +35,7 @@ public class PrimaryController implements Initializable {
     }
     
     public void llenarTablero() {
-        GridPane tablero = new Tablero();
+        GridPane tablero = new Tablero(celdas);
 
         // Ajusta el tamaño preferido de las celdas
         double celdaSize = 100.0;
@@ -45,16 +45,14 @@ public class PrimaryController implements Initializable {
                 Celda celda = new Celda(i, j, celdas);
                 tablero.add(celda, i, j);
                 celdas[i][j] = celda;
-                celda.setStyle("-fx-border-color: black; -fx-border-width: 2px;");
-                ImageView imagen = new ImageView(new Image("img/piezaO.png"));
-                imagen.setFitWidth(100); // Establecer el ancho deseado
-                imagen.setFitHeight(100);
-                celda.getChildren().add(imagen);
+                celda.setStyle("-fx-border-color: black; -fx-border-width: 5px;");
+
             }
         }
 
         // Configura las restricciones de diseño para centrar el tablero en el BorderPane
         BorderPane.setAlignment(tablero, Pos.CENTER);
         panel.setCenter(tablero);
+
     }
 }
