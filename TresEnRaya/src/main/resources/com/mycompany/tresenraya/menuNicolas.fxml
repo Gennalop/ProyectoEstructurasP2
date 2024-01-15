@@ -1,48 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="460.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuNicolasController">
-   <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Tic Tac Toe">
+
+<AnchorPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="650.0" style="-fx-background-color: #50385b;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenuNicolasController">
+   <children>
+      <BorderPane layoutX="131.0" layoutY="-5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="388.0" style="-fx-background-color: null;">
+         <top>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Tic Tac Toe" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="53.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <AnchorPane BorderPane.alignment="TOP_CENTER">
+               <children>
+                  <VBox fx:id="modePanel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="205.0" prefWidth="400.0" spacing="10.0" style="-fx-border-color: #ffffff; -fx-border-width: 2; -fx-border-radius: 9,8,5,4;">
+                     <children>
+                        <Label text="Modo de Juego" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="23.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="70.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fx:id="singleplayer" fitHeight="85.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Button fx:id="vsCpuButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: #ffffff;" text="Single Player">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fx:id="multiplayer" fitHeight="85.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Button fx:id="vsPlayerButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="Multi Player">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </VBox>
+                  <ImageView fx:id="next" fitHeight="40.0" fitWidth="50.0" layoutX="350.0" layoutY="212.0" onMouseClicked="#nextOption" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="212.0" />
+                  <ImageView fx:id="previous" fitHeight="40.0" fitWidth="50.0" layoutY="215.0" onMouseClicked="#previousOption" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="210.0" />
+                  <VBox fx:id="piecePanel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="205.0" prefWidth="400.0" spacing="10.0" style="-fx-border-color: #ffffff; -fx-border-width: 2; -fx-border-radius: 9,8,5,4;" visible="false">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label text="Elige tu Pieza" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="23.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="70.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                                 <children>
+                                    <ImageView fx:id="pieceX" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ComboBox fx:id="turnX" prefHeight="25.0" prefWidth="65.0" promptText="1st" style="-fx-background-color: #ffffff;" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                                 <children>
+                                    <ImageView fx:id="pieceO" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ComboBox fx:id="turnO" prefHeight="25.0" prefWidth="65.0" promptText="2nd" style="-fx-background-color: #ffffff;" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <Button fx:id="jugar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#jugar" prefHeight="43.0" prefWidth="93.0" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-width: 3; -fx-border-radius: 9,8,5,4;" text="JUGAR" textFill="WHITE" BorderPane.alignment="TOP_CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="48.0" />
+               </BorderPane.margin>
                <font>
-                  <Font name="Charter Roman" size="49.0" />
+                  <Font name="Segoe UI Black" size="18.0" />
                </font>
-            </Label>
-         </children>
-      </HBox>
-   </top>
-   <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="460.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="218.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../Desktop/Captura%20de%20Pantalla%202023-12-29%20a%20la(s)%2016.26.32.png" />
-               </image>
-            </ImageView>
-         </children>
-      </VBox>
-   </center>
-   <bottom>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Modo de Juego">
-               <font>
-                  <Font name="Bodoni 72 Oldstyle Book" size="24.0" />
-               </font>
-            </Label>
-            <Button fx:id="vsCpuButton" mnemonicParsing="false" onMouseClicked="#vsCpu" prefHeight="34.0" prefWidth="94.0" text="Vs CPU" />
-            <Button fx:id="vsPlayerButton" mnemonicParsing="false" onMouseClicked="#vsPlayer" prefHeight="34.0" prefWidth="94.0" text="Vs Player" />
-         </children>
-      </VBox>
-   </bottom>
-</BorderPane>
+               <effect>
+                  <DropShadow height="29.31" radius="44.1975" spread="0.61" width="149.48" />
+               </effect>
+            </Button>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>
