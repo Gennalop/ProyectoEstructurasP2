@@ -35,12 +35,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        Celda celda1 = new Celda(1,1, new Celda[1][1]);
-        Celda celda2 = new Celda(1,1, new Celda[1][1]);
-        boolean b1 = celda1.getSimbolo().equals(celda2.getSimbolo());
-        boolean b2 = celda1.getSimbolo().getImage().equals(celda2.getSimbolo().getImage());
-        boolean b3 = celda1.getSimbolo().getImage().getUrl().endsWith("img/piezaVacia.png");
-        System.out.println("b1: " + b3);
         launch();
 
     }

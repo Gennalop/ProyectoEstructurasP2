@@ -19,8 +19,8 @@ import javafx.scene.layout.StackPane;
  *
  * @author Usuario
  */
-public class Celda extends StackPane  {
-    private ImageView simbolo;
+public class Celda extends StackPane {
+    private String simbolo;
     private final int fila;
     private final int columna;
     private Celda[][] celdas;
@@ -29,19 +29,20 @@ public class Celda extends StackPane  {
         this.fila = fila;
         this.columna = columna;
         this.celdas = celdas;
-        this.simbolo = new ImageView(new Image("img/piezaVacia.png"));
-        this.getChildren().add(simbolo);
-        simbolo.setFitWidth(95);
-        simbolo.setFitHeight(95);   
+        this.simbolo = "img/piezaVacia.png";
+        ImageView iv = new ImageView(new Image(simbolo));
+        iv.setFitWidth(95);
+        iv.setFitHeight(95);   
+        this.getChildren().add(iv);
         setOnMouseClicked(this::handleMouseClicked);
     }
 
     private void handleMouseClicked(MouseEvent t) {
-        Image img = new Image("img/piezaO.png");
-        simbolo.setImage(img);
+        this.setSimbolo("img/piezaO.png");
+        ImageView iv = new ImageView(new Image(simbolo));
     }
 
-    public ImageView getSimbolo() {
+    public String getSimbolo() {
         return simbolo;
     }
 
@@ -55,6 +56,10 @@ public class Celda extends StackPane  {
 
     public Celda[][] getCeldas() {
         return celdas;
+    }
+
+    public void setSimbolo(String simbolo) {
+        this.simbolo = simbolo;
     }
     
     

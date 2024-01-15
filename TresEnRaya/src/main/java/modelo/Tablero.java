@@ -5,9 +5,12 @@
  */
 package modelo;
 
+import java.util.LinkedList;
+import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import util.Tree;
 
 /**
  *
@@ -33,6 +36,44 @@ public class Tablero extends GridPane {
         }
         return 0;
     }
+
+    public int getUtilidad() {
+        return utilidad;
+    }
+
+    public Celda[][] getCeldas() {
+        return celdas;
+    }
     
+
     
+    public Tree<Tablero> generarArbol(String pieza, int nivel) {
+        Tablero tablero = this;
+        Tree<Tablero> arbol = new Tree<>(this);
+        List<Tree<Tablero>> hijos = new LinkedList<>();
+        for (int n = 0; n < filas; n++) {
+            for (int m = 0; m < columnas; m++) {
+                Celda celda = celdas[n][m];
+                if (celda.getSimbolo().equals("img/piezaVacia.png")) {
+                    celda.setSimbolo(pieza);
+                    Celda celdasTmp[][] = new Celda[filas][columnas];
+                    celdasTmp[n][m] = celda;
+                    Tablero tmp = new Tablero(celdasTmp);
+                    Tree<Tablero> arbolTmp = new Tree<>(tmp);
+                    hijos.add(arbolTmp);
+                }
+                
+            }
+        }
+        if (nivel == 1){
+            return arbol;
+        }else{
+            for (Tree<Tablero> t: hijos) {
+                Tablero tbl = t.getRoot();
+                tbl.generarArbol("img/piezaO.png", nivel + 1);
+            }
+            arbol.setChildren(hijos);
+            return arbol;
+        }
+    }
 }

@@ -5,6 +5,8 @@
  */
 package util;
 
+import java.util.List;
+
 /**
  *
  * @author Usuario
@@ -15,6 +17,10 @@ public class Tree<E> {
     
     public Tree () {
         this.root = null; 
+    }
+    
+    public Tree (E root) {
+        this.root = new TreeNode<>(root);
     }
     
     public boolean isEmpty () {
@@ -39,6 +45,10 @@ public class Tree<E> {
     
     public boolean isLeaf () {
         return this.root.getChildren().isEmpty();
+    }
+    
+    public void setChildren(List<Tree<E>> children) {
+        this.root.setChildren(children);
     }
     
 }
