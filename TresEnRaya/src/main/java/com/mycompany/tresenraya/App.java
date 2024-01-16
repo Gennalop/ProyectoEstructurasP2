@@ -10,6 +10,8 @@ import java.io.IOException;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import modelo.Celda;
+import modelo.Tablero;
+import util.Tree;
 
 /**
  * JavaFX App
@@ -36,7 +38,18 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
-
+        Tablero tablero = new Tablero();
+        Celda celda1 = new Celda(0, 0);
+        celda1.setSimbolo("img/piezaX.png");
+        tablero.setCelda(0, 0, celda1);
+        Celda celda2 = new Celda(2, 2);
+        celda2.setSimbolo("img/piezaX.png");
+        tablero.setCelda(2, 2, celda2);  
+        Celda celda3 = new Celda(1, 1);
+        celda3.setSimbolo("img/piezaX.png");
+        tablero.setCelda(1, 1, celda3);        
+        Tree<Tablero> arbol = tablero.generarArbol("img/piezaX.png", 0);
+        System.out.print(arbol);
     }
 
 }

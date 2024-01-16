@@ -51,4 +51,7 @@ public class Tree<E> {
         this.root.setChildren(children);
     }
     
+    public String toString() {
+        return "Raiz[\n" + root + "\nHijos{" + root.getChildren() + "}]";
+    }
 }

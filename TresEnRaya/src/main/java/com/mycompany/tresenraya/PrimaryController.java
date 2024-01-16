@@ -42,7 +42,7 @@ public class PrimaryController implements Initializable {
 
         for (int i = 0; i < fila; i++) {
             for (int j = 0; j < columna; j++) {
-                Celda celda = new Celda(i, j, celdas);
+                Celda celda = new Celda(i, j);
                 tablero.add(celda, i, j);
                 celdas[i][j] = celda;
                 celda.setStyle("-fx-border-color: black; -fx-border-width: 5px;");

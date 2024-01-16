@@ -19,7 +19,7 @@ class TreeNode<E> {
 
     public TreeNode(E content) {
         this.content = content;
-        this.children = new LinkedList<>();
+        this.children = null;
     }
 
     public E getContent() {
@@ -36,6 +36,10 @@ class TreeNode<E> {
 
     public void setChildren(List<Tree<E>> children) {
         this.children = children;
+    }
+    
+    public String toString() {
+        return content.toString();
     }
      
 }
