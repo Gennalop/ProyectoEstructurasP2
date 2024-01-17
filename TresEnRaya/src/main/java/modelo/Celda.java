@@ -19,7 +19,7 @@ import javafx.scene.layout.StackPane;
  *
  * @author Usuario
  */
-public class Celda extends StackPane{
+public class Celda extends StackPane implements Comparable<Celda>{
     private String simbolo;
     private final int fila;
     private final int columna;
@@ -71,5 +71,13 @@ public class Celda extends StackPane{
     public boolean isX(){
         return "img/piezaX.png".equals(simbolo);
     }
+
+
+    @Override
+    public int compareTo(Celda c) {
+        return this.simbolo.compareTo(c.getSimbolo());
+    }
+    
+    
 
 }

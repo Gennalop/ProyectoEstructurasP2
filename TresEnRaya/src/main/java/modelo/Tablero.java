@@ -57,29 +57,29 @@ public class Tablero extends GridPane {
             for(int m = 0; m < 3; m++){ //columnas
                 
                 if(simbolo.equals("O")){ //Para el simbolo O
-                    if(!celdas[n][m].isEmpty() || !celdas[n][m].isO()){
+                    if(!celdas[n][m].isEmpty() && !celdas[n][m].isO()){
                         probableFila = false;
                     }
                     
-                    if(!celdas[m][n].isEmpty() || !celdas[m][n].isO()){
+                    if(!celdas[m][n].isEmpty() && !celdas[m][n].isO()){
                         probableColumna = false;
                     }
                     
-                    if(!celdas[m][m].isEmpty() || !celdas[m][m].isO()){ //en la diagonal puede ser [n][n] o [m][m], no importa ahí
+                    if(!celdas[m][m].isEmpty() && !celdas[m][m].isO()){ //en la diagonal puede ser [n][n] o [m][m], no importa ahí
                         probableDiagonal = false;
                     }
                 }
                 
                 else{ //Para el simbolo X
-                    if(!celdas[n][m].isEmpty() || !celdas[n][m].isX()){
+                    if(!celdas[n][m].isEmpty() && !celdas[n][m].isX()){
                         probableFila = false;
                     }
                     
-                    if(!celdas[m][n].isEmpty() || !celdas[m][n].isX()){
+                    if(!celdas[m][n].isEmpty() && !celdas[m][n].isX()){
                         probableColumna = false;
                     }
                     
-                    if(!celdas[m][m].isEmpty() || !celdas[m][m].isX()){
+                    if(!celdas[m][m].isEmpty() && !celdas[m][m].isX()){
                         probableDiagonal = false;
                     }
                 }
@@ -100,7 +100,33 @@ public class Tablero extends GridPane {
         return posiblesJugadas;
     }
     
+    public String verificarGanador(){ //Retorna el simbolo que gano, se deberia correr cada turno
+           
+        for(int i = 0; i < 3; i++){
+            
+            //Horizontal
+            if(jugadaGanadora(celdas[i][0], celdas[i][1], celdas[i][2]))
+                return celdas[i][0].getSimbolo(); //Retorna el simbolo que tiene la jugada ganadora
+            
+            //Vertical
+            else if(jugadaGanadora(celdas[0][i], celdas[1][i], celdas[2][i]))
+                return celdas[0][1].getSimbolo();
+            
+            //Diagonales
+            else if(jugadaGanadora(celdas[0][0], celdas[1][1], celdas[2][2]))
+                return celdas[0][0].getSimbolo();
+            
+            else if(jugadaGanadora(celdas[2][0], celdas[1][1], celdas[0][2]))
+                return celdas[2][0].getSimbolo();
+            
+        }
+        
+        return null;
+    }
     
+    private boolean jugadaGanadora(Celda a, Celda b, Celda c){
+        return (a.compareTo(b) == 0 && b.compareTo(c) == 0);
+    }
 
     public int getUtilidad(){
         return utilidad;
@@ -158,6 +184,18 @@ public class Tablero extends GridPane {
             }
             arbol.setChildren(hijos);
             return arbol;
+    }
+    
+    public boolean isFull(){ //Me indica si el tablero ya esta lleno de simbolos y no se puede jugar mas
+        boolean full = true;
+        for(int f = 0; f < 3; f++){
+            for(int c = 0; c < 3; c++){
+                if(celdas[f][c].isEmpty())
+                    return false;
+                
+            }
+        }
+        return full;
     }
 
     @Override
