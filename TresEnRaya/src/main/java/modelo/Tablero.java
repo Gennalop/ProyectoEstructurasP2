@@ -38,16 +38,71 @@ public class Tablero extends GridPane {
     }
     
     public int funcionDeUtilidad() {
-        int contadorO = 0;
-        int contadorX = 0;
-        int victoria[][] = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 5, 6}};
-        for (int n = 0; n < victoria.length; n++) {
-            
-        }
-        return 0;
+        int contadorO = calcularPosiblesJugadas("O"); //Pieza jugador real
+        int contadorX = calcularPosiblesJugadas("X"); //Pieza cpu
+        
+        //Como el que le sirve este dato es el cpu, cpu es el "jugador" en el calculo de utilidad, u jugador(t) = P jugador– Poponente
+        return contadorX - contadorO;
     }
+    
+    private int calcularPosiblesJugadas(String simbolo){
+     
+        int posiblesJugadas = 0;
+        for (int n = 0; n < 3; n++) { //filas
+            
+            boolean probableFila = true;
+            boolean probableColumna = true;
+            boolean probableDiagonal = true;
+            
+            for(int m = 0; m < 3; m++){ //columnas
+                
+                if(simbolo.equals("O")){ //Para el simbolo O
+                    if(!celdas[n][m].isEmpty() || !celdas[n][m].isO()){
+                        probableFila = false;
+                    }
+                    
+                    if(!celdas[m][n].isEmpty() || !celdas[m][n].isO()){
+                        probableColumna = false;
+                    }
+                    
+                    if(!celdas[m][m].isEmpty() || !celdas[m][m].isO()){ //en la diagonal puede ser [n][n] o [m][m], no importa ahí
+                        probableDiagonal = false;
+                    }
+                }
+                
+                else{ //Para el simbolo X
+                    if(!celdas[n][m].isEmpty() || !celdas[n][m].isX()){
+                        probableFila = false;
+                    }
+                    
+                    if(!celdas[m][n].isEmpty() || !celdas[m][n].isX()){
+                        probableColumna = false;
+                    }
+                    
+                    if(!celdas[m][m].isEmpty() || !celdas[m][m].isX()){
+                        probableDiagonal = false;
+                    }
+                }
+            }
+            if(probableFila == true)
+                posiblesJugadas++;
+            
+            if(probableColumna == true)
+                posiblesJugadas++;
+            
+            if(probableDiagonal == true)
+                posiblesJugadas++;
+            
+         
+     
+        
+        }
+        return posiblesJugadas;
+    }
+    
+    
 
-    public int getUtilidad() {
+    public int getUtilidad(){
         return utilidad;
     }
 

@@ -59,5 +59,17 @@ public class Celda extends StackPane{
     public void setSimbolo(String simbolo) {
         this.simbolo = simbolo;
     }
+    
+    public boolean isEmpty(){
+        return "img/piezaVacia.png".equals(simbolo); //Esto significa que está vacia 
+    }
+    
+    public boolean isO(){
+        return "img/piezaO.png".equals(simbolo);
+    }
+    
+    public boolean isX(){
+        return "img/piezaX.png".equals(simbolo);
+    }
 
 }
