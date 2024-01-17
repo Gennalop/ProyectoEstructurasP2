@@ -1,23 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package util;
 
-/**
- *
- * @author Usuario
- */
 import java.util.LinkedList;
 import java.util.List;
 
-class TreeNode<E> {
+class NodeTree<E> {
     
     private E content;
     private List<Tree<E>> children;
 
-    public TreeNode(E content) {
+    public NodeTree(E content) {
         this.content = content;
         this.children = new LinkedList<>();
     }
@@ -36,6 +27,10 @@ class TreeNode<E> {
 
     public void setChildren(List<Tree<E>> children) {
         this.children = children;
+    }
+    
+    public String toString() {
+        return content.toString();
     }
      
 }
